@@ -206,6 +206,8 @@ checklist, including RC guidance and burn-in expectations.
 
 Skim the [Quick Reference](docs/quick-reference.md) if you need a refresher on
 which surface matches each stdlib helper before diving in.
+Prefer worked examples? The [Recipes index](docs/recipes/README.md) shows
+thread, process, and asyncio migrations step-by-step.
 
 ### Automatic execution in one call
 

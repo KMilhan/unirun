@@ -5,7 +5,8 @@ and `asyncio` helpers with `unirun.compat` mirrors. The compat layer keeps the
 stdlib surface intact while layering on capability-aware defaults, downgrade
 warnings, and a clear path toward managed execution with `Run`. For a snapshot
 of every helper and its stdlib analogue, keep the [Quick Reference](docs/quick-reference.md)
-nearby.
+nearby; for worked, copy-pastable migrations see the
+[Recipes index](docs/recipes/README.md).
 
 ## 1. Stage the rollout
 
@@ -109,6 +110,10 @@ with Run(flavor="threads") as executor:
   fully managed execution scopes with trace hooks.
 
 ## Appendix: Asyncio adoption checklist
+
+Need an end-to-end coroutine example? The
+[Recipes index](docs/recipes/README.md#asyncio--compat) contains a focused
+guide that mirrors the steps below.
 
 `unirun.compat.asyncio` mirrors the stdlib module and intentionally keeps the
 `asyncio.run`, `gather`, `run_in_executor`, and `to_thread` signatures identical.
