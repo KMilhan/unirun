@@ -53,3 +53,4 @@ automated publishing workflow can succeed without manual patches.
    tasks.
 3. If the release introduced new environment toggles or operational guidance,
    notify downstream consumers and update internal runbooks.
+4. Close out any remaining items from [`docs/release-readiness.md`](docs/release-readiness.md).

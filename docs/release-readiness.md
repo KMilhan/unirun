@@ -1,0 +1,35 @@
+# Release Readiness Checklist
+
+Use this list to confirm v1.0 is truly ship-ready. Each section links to the
+source-of-truth doc so the checklist stays short and enforceable.
+
+## Documentation parity
+- [ ] README quick start + release notes reflect the current `Run`/compat
+      surface (see [`README.md`](../README.md)).
+- [ ] Architecture commitments match the implemented API
+      (see [`ARCHITECTURE.md`](../ARCHITECTURE.md)).
+- [ ] Quick Reference, Recipes, and Instrumentation guides are updated together:
+  - [`docs/quick-reference.md`](docs/quick-reference.md)
+  - [`docs/recipes/README.md`](docs/recipes/README.md)
+  - [`docs/instrumentation.md`](docs/instrumentation.md)
+
+## Packaging & automation
+- [ ] `pyproject.toml` metadata (classifiers, description, version source) is
+      up-to-date.
+- [ ] `unirun/__init__.py` exports (`__all__`) include all public helpers.
+- [ ] Release workflow (`hatch build/publish` via CI) succeeds on a tagged
+      commit.
+
+## Verification
+- [ ] Test matrix executed across CPython 3.11–3.14 (GIL + nogil) with results
+      attached to the release notes.
+- [ ] Benchmarks captured before/after the final change set.
+- [ ] Pytest asyncio configuration locked to `asyncio_mode=auto` (see
+      [`pytest.ini`](../pytest.ini)).
+
+## Release process
+- [ ] Candidate tag (e.g., `v1.0.0-rc1`) created; burn-in results recorded.
+- [ ] Final release notes summarize doc updates, migration guidance, and
+      verification artifacts.
+- [ ] Outstanding follow-ups filed as separate issues before closing
+      [`#16`](https://github.com/KMilhan/unirun/issues/16).
