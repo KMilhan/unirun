@@ -3,7 +3,9 @@
 This guide walks teams through replacing direct imports of `concurrent.futures`
 and `asyncio` helpers with `unirun.compat` mirrors. The compat layer keeps the
 stdlib surface intact while layering on capability-aware defaults, downgrade
-warnings, and a clear path toward managed execution with `Run`.
+warnings, and a clear path toward managed execution with `Run`. For a snapshot
+of every helper and its stdlib analogue, keep the [Quick Reference](docs/quick-reference.md)
+nearby.
 
 ## 1. Stage the rollout
 
@@ -25,7 +27,8 @@ uv run pytest tests/
 ## 2. Swap imports without changing call sites
 
 Replace stdlib imports with the matching compat module. All names exported by
-compat mirror the stdlib spelling, so the rest of the file keeps working.
+compat mirror the stdlib spelling, so the rest of the file keeps working. Refer
+to the [Quick Reference](docs/quick-reference.md) if you need a fast lookup.
 
 ```diff
 -from concurrent import futures
@@ -76,6 +79,9 @@ and nogil behaviour.
 
 You can also reuse compat in tandem with `Run` if a scope needs explicit
 management:
+
+> Need a refresher on thread-mode knobs? See the
+> [Quick Reference](docs/quick-reference.md#environment-toggles).
 
 ```python
 from unirun import Run
@@ -135,7 +141,9 @@ When migrating asynchronous services:
   ```
 
 This keeps the migration readable and ready for teams that want to move deeper
-into managed execution while remaining inside familiar `asyncio` vocabulary.
+into managed execution while remaining inside familiar `asyncio` vocabulary. The
+[Quick Reference](docs/quick-reference.md) captures every compat helper alongside
+its stdlib counterpart.
 
 ---
 

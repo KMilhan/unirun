@@ -1,7 +1,7 @@
 # unirun v1.0 Milestones
 
 ## Current Stage
-- Value narrative, documentation structure, and architectural contracts centred on `Run` and `compat` are in place, but the library surface still reflects the previous helper set (`run()`, `get_executor`, hint flags).
+- Value narrative, documentation structure, and architectural contracts centred on `Run` and `compat` are in place, but the library surface still reflects the previous helper set—use the living [Quick Reference](docs/quick-reference.md) to track the supported API during the rollout.
 - `RuntimeConfig.thread_mode` (and matching environment toggles) are documented yet unimplemented; `Run` itself does not exist in code, nor does the scheduler bridge required to honour the new signature.
 - Compat scaffolding and CPython parity test harnesses are not wired up; verification relies on the existing pytest suite only.
 
@@ -27,6 +27,6 @@
    - Add mutation/stress fixtures covering shutdown edges and mixed interpreter runs.
    - Establish record/replay or canary harness guidance for adopters.
 6. **Release Readiness** *(see ARCHITECTURE.md §Developer Experience & Future Work)*
-   - Finalise docs (README quick start, architecture, recipes) to match the implemented API.
+   - Finalise docs (README quick start, architecture, recipes, [Quick Reference](docs/quick-reference.md)) to match the implemented API.
    - Run full test matrices across supported interpreters (3.11–3.14, GIL and nogil variants).
    - Tag v1.0 after at least one RC burn-in with benchmarks captured.

@@ -192,7 +192,7 @@ async def refresh_cache(keys: list[str]) -> None:
   teams that "it must work" in real environments.
 
 ## Developer Experience Commitments
-- Publish quick-reference tables that map `Run` flavors and `compat` imports to the closest standard-library analogue (e.g., `Run(flavor="threads")` ↔ `ThreadPoolExecutor`), reinforcing the golden rule at a glance; house them under `docs/quick-reference.md` so contributors know where to extend them.
+- Publish quick-reference tables that map `Run` flavors and `compat` imports to the closest standard-library analogue (e.g., `Run(flavor="threads")` ↔ `ThreadPoolExecutor`), reinforcing the golden rule at a glance; see [`docs/quick-reference.md`](docs/quick-reference.md) and extend it as new surfaces appear.
 - Maintain migration recipes that show before/after diffs for replacing raw `ThreadPoolExecutor`, `ProcessPoolExecutor`, or `asyncio.to_thread` usage with `unirun` helpers in representative scripts and services, collected in `docs/recipes/`.
 - Pair each recipe with a second phase demonstrating how to move from compat
   imports to `Run(flavor=...)` so teams understand the incremental path.

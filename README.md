@@ -54,7 +54,8 @@ From that value statement we can articulate some concrete guarantees:
 > (`run_sync`, `to_executor`, `submit`, `map_sync`, `reset_state`, `gather`)
 > were removed. Use `Run` and the shared scheduler, plus
 > `unirun.to_thread`/`to_process`, `unirun.submit`, `unirun.map`, and
-> `unirun.reset` for their modern, stdlib-aligned equivalents.
+> `unirun.reset` for their modern, stdlib-aligned equivalents. See the
+> [Quick Reference](docs/quick-reference.md) for a side-by-side mapping.
 
 ## Drop-In Parity, Optional Upgrades
 
@@ -63,6 +64,9 @@ returns a real `concurrent.futures.Executor` or mirrors an `asyncio`
 coroutine signature, so existing call sites keep working unchanged. Swap in the
 matching `unirun` helper only when you want tuned defaults or automatic
 capability detection—the underlying objects and futures stay the same.
+
+📘 Need the short version? Check the [Quick Reference](docs/quick-reference.md)
+for tables mapping Run flavors and compat exports to their stdlib equivalents.
 
 📚 Read the step-by-step [compat migration guide](docs/compat-migration.md) when
 you are ready to adopt `unirun.compat` across a codebase.
@@ -199,6 +203,9 @@ and publishes to PyPI using trusted publishing. See
 checklist, including RC guidance and burn-in expectations.
 
 ## Quick Start
+
+Skim the [Quick Reference](docs/quick-reference.md) if you need a refresher on
+which surface matches each stdlib helper before diving in.
 
 ### Automatic execution in one call
 
