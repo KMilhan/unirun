@@ -9,8 +9,10 @@ automated publishing workflow can succeed without manual patches.
 1. Confirm `main` is green on the latest commit (`uv run pytest`, `make lint-check`,
    compat contracts, mutation, and benchmark workflows).
 2. Update release notes and user-facing docs (`README.md`, `docs/` companions,
-   especially [`docs/quick-reference.md`](docs/quick-reference.md)) so the new
-   behaviour is discoverable.
+   especially [`docs/quick-reference.md`](docs/quick-reference.md),
+   [`docs/recipes/`](docs/recipes/README.md), and
+   [`docs/instrumentation.md`](docs/instrumentation.md)) so the new behaviour is
+   discoverable.
    - For v1.0 specifically, reiterate that `unirun.runtime` and helpers
      (`run_sync`, `to_executor`, `submit`, `map_sync`, `reset_state`, `gather`)
      were removed in favour of `Run`, the scheduler, and

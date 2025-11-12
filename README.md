@@ -221,6 +221,15 @@ with Run(flavor="auto") as executor:
     print(result)
 ```
 
+## Release Notes (v1.0 documentation refresh)
+
+Legacy helpers were fully retired—`unirun.runtime` and friends now redirect to
+`Run` or compat guidance—so the shipped API mirrors the stdlib vocabulary. New
+docs add a Quick Reference, Recipes, and Instrumentation guide to make adoption
+and observability straightforward, while pytest enforces a consistent
+`asyncio_mode=auto` configuration across CI and local runs. Together these
+changes keep the docs, tooling, and tests aligned for the v1.0 cut.
+
 ### Manual control with a managed thread pool
 
 ```python
