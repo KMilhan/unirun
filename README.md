@@ -229,8 +229,10 @@ docs add a Quick Reference, Recipes, and Instrumentation guide to make adoption
 and observability straightforward, while pytest enforces a consistent
 `asyncio_mode=auto` configuration across CI and local runs. Together these
 changes keep the docs, tooling, and tests aligned for the v1.0 cut. Tagged
-publishes run through [`.github/workflows/release.yml`](.github/workflows/release.yml);
-track the full checklist in [`docs/release-readiness.md`](docs/release-readiness.md).
+publishes run through [`.github/workflows/release.yml`](.github/workflows/release.yml)
+and the CPython test matrix lives in
+[`.github/workflows/test-matrix.yml`](.github/workflows/test-matrix.yml)—see
+[`docs/release-readiness.md`](docs/release-readiness.md) for the checklist.
 
 ### Manual control with a managed thread pool
 

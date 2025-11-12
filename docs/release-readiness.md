@@ -26,6 +26,10 @@ source-of-truth doc so the checklist stays short and enforceable.
 ## Verification
 - [ ] Test matrix executed across CPython 3.11–3.14 (GIL + nogil) with results
       attached to the release notes.
+- [ ] CI workflow [`test-matrix.yml`](../.github/workflows/test-matrix.yml)
+      exercised (Python 3.11–3.14). Trigger via *Actions → Test Matrix → Run
+      workflow* or push a `v*` tag; grab artifacts named
+      `pytest-python-<version>` for evidence.
 - [ ] Benchmarks captured before/after the final change set.
 - [ ] Pytest asyncio configuration locked to `asyncio_mode=auto` (see
       [`pytest.ini`](../pytest.ini)).

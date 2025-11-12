@@ -1,0 +1,70 @@
+name: Test Matrix
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  pytest:
+    name: Pytest (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13', '3.14']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+
+      - name: Sync dependencies
+        run: uv sync --extra benchmark
+
+      - name: Ensure pytest asyncio mode
+        run: |
+          python - <<'PY'
+          from configparser import ConfigParser
+          from pathlib import Path
+
+          ini = Path("pytest.ini")
+          config = ConfigParser()
+          config.optionxform = str
+          if ini.exists():
+              config.read(ini, encoding="utf-8")
+          if "pytest" not in config:
+              config["pytest"] = {}
+          config["pytest"]["asyncio_mode"] = "auto"
+          with ini.open("w", encoding="utf-8") as fh:
+              config.write(fh)
+          PY
+
+      - name: Run pytest
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          mkdir -p reports
+          uv run pytest -q --junitxml=reports/junit.xml
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-python-${{ matrix.python-version }}
+          path: |
+            reports/
+            logs/
+            *.log
+          if-no-files-found: warn
