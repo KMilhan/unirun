@@ -9,7 +9,7 @@ processes, sub-interpreters, or free-threaded runtimes can be expressed with
 existing terminology.
 
 ## Project Structure & Module Organization
-Core logic lives in `src/unirun/`: `runtime.py` manages executor selection, `capabilities.py` captures interpreter traits, and `workloads.py` supplies deterministic helpers. The optional CLI wrapper is in `src/unirun_bench/` (`__main__.py`, `cli.py`) so it can ship independently. Tests reside in `tests/` with discovery driven by pytest; reuse the existing `test_unirun.py` layout when extending coverage. Packaging metadata and Hatch build targets stay in `pyproject.toml`.
+Core logic lives in `src/unirun/`: `run.py` and `scheduler.py` coordinate executor selection, `capabilities.py` captures interpreter traits, and `workloads.py` supplies deterministic helpers. The optional CLI wrapper is in `src/unirun_bench/` (`__main__.py`, `cli.py`) so it can ship independently. Tests reside in `tests/` with discovery driven by pytest; reuse the existing `test_unirun.py` layout when extending coverage. Packaging metadata and Hatch build targets stay in `pyproject.toml`.
 
 ## Build, Test, and Development Commands
 - `uv venv --python 3.14 && source .venv/bin/activate`: create the local environment using uv (adjust Python version as needed).
@@ -26,7 +26,7 @@ Follow PEP 8 defaults: 4-space indentation, soft wrap near 100 characters, modul
 As an agent, you keep the ratio of comment to code, 30 to 70. Follow Google Python Style Guide for docstrings and comments, keep EN-us spelling.
 
 ## Testing Guidelines
-Prefer pytest with function-only tests (`test_<feature>`) under `tests/`. Use fixtures for setup instead of classes; when touching executor state, call `reset_state()` in a fixture or `finally` block. Reuse workloads from `unirun.workloads` to maintain deterministic timing and cover both auto and forced executor modes. Existing unittest-based suites continue to run via pytest—adapt or replace them incrementally.
+Prefer pytest with function-only tests (`test_<feature>`) under `tests/`. Use fixtures for setup instead of classes; when touching executor state, call `unirun.reset()` in a fixture or `finally` block. Reuse workloads from `unirun.workloads` to maintain deterministic timing and cover both auto and forced executor modes. Existing unittest-based suites continue to run via pytest—adapt or replace them incrementally.
 
 Organize the suite so that each test module covers exactly one concurrency or parallelism feature. Companion parity checks with the CPython stdlib belong in files that share the feature name and end with `_double.py` (for example, `test_thread_executor.py` and `test_thread_executor_double.py`).
 

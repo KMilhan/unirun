@@ -10,6 +10,10 @@ automated publishing workflow can succeed without manual patches.
    compat contracts, mutation, and benchmark workflows).
 2. Update release notes and user-facing docs (`README.md`, `docs/` companions) so
    the new behaviour is discoverable.
+   - For v1.0 specifically, reiterate that `unirun.runtime` and helpers
+     (`run_sync`, `to_executor`, `submit`, `map_sync`, `reset_state`, `gather`)
+     were removed in favour of `Run`, the scheduler, and
+     `unirun.to_thread`/`to_process` plus the modern `submit`/`map`/`reset` helpers.
 3. Regenerate any compatibility snapshots or benchmark artifacts that changed
    during the cycle.
 4. Run `uv run pytest` against all supported interpreters locally when possible

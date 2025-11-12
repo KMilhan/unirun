@@ -50,6 +50,12 @@ From that value statement we can articulate some concrete guarantees:
 - Benchmark harness covering micro → macro scenarios without runtime
   dependencies, plus an optional `unirun_bench` CLI module for manual analysis.
 
+> **Deprecation note:** In v1.0 the legacy `unirun.runtime` module and helpers
+> (`run_sync`, `to_executor`, `submit`, `map_sync`, `reset_state`, `gather`)
+> were removed. Use `Run` and the shared scheduler, plus
+> `unirun.to_thread`/`to_process`, `unirun.submit`, `unirun.map`, and
+> `unirun.reset` for their modern, stdlib-aligned equivalents.
+
 ## Drop-In Parity, Optional Upgrades
 
 `unirun` wraps the standard library rather than replacing it. Every helper
