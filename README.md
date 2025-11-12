@@ -119,7 +119,8 @@ behalf. Opting in buys you:
 - Guardrails for emerging runtimes: free-threaded builds use tuned thread
   pools, while unsupported modes fall back to safe stdlib defaults.
 - Observability hooks: `Run(trace=...)` plus `observe_decisions()` log or
-  capture scheduler choices without custom plumbing.
+  capture scheduler choices without custom plumbing (see
+  [`docs/instrumentation.md`](docs/instrumentation.md)).
 
 ## Seamless `asyncio.to_thread` Upgrades
 

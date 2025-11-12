@@ -19,7 +19,7 @@
    - Build `unirun.compat` packages that mirror stdlib modules, backed by the shared scheduler.
    - Add migration guardrails (env toggles, warnings) and document usage recipes.
    - Integrate CPython contract suites (`test.concurrent_futures`, `test.asyncio`, executor-specific tests) to prove drop-in parity, and capture any deviations as explicit waivers.
-4. **Instrumentation & Observability** *(see ARCHITECTURE.md §Run — Scope Instrumentation)*
+4. **Instrumentation & Observability** *(see ARCHITECTURE.md §Run — Scope Instrumentation and [`docs/instrumentation.md`](docs/instrumentation.md))*
    - Implement decision traces accessible from `Run` scopes; expose worker counts and lifecycle metrics.
    - Provide structured logging hooks for production monitoring.
 5. **Verification Upgrades** *(see ARCHITECTURE.md §Verification Strategy)*

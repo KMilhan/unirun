@@ -133,7 +133,8 @@ async def refresh_cache(keys: list[str]) -> None:
 - Global helpers (`add_decision_listener`, `remove_decision_listener`) let
   services register shared instrumentation regardless of whether they use
   `Run` or compat imports.
-- The `observe_decisions()` context manager streams decisions to a logger,
+- The `observe_decisions()` context manager streams decisions to a logger (see
+  [`docs/instrumentation.md`](docs/instrumentation.md) for usage patterns),
   enabling structured logs/metrics during targeted rollouts.
 
 ## Components & Layout
