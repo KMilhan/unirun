@@ -1,0 +1,46 @@
+name: Bench CI
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Sync dependencies
+        run: uv sync --extra benchmark --frozen
+
+      - name: Run targeted benchmark suite
+        run: |
+          mkdir -p bench
+          uv run python -m unirun_bench \
+            --profile io \
+            --samples 1 \
+            --duration 0.05 \
+            --json \
+            --show-capabilities > bench/bench.json
+
+      - name: Upload benchmark artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bench-results
+          path: bench/bench.json

@@ -231,8 +231,10 @@ and observability straightforward, while pytest enforces a consistent
 changes keep the docs, tooling, and tests aligned for the v1.0 cut. Tagged
 publishes run through [`.github/workflows/release.yml`](.github/workflows/release.yml)
 and the CPython test matrix lives in
-[`.github/workflows/test-matrix.yml`](.github/workflows/test-matrix.yml)—see
-[`docs/release-readiness.md`](docs/release-readiness.md) for the checklist.
+[`.github/workflows/test-matrix.yml`](.github/workflows/test-matrix.yml); the
+benchmark snapshot workflow is
+[`.github/workflows/bench.yml`](.github/workflows/bench.yml)—see
+[`docs/release-readiness.md`](docs/release-readiness.md) for the full checklist.
 
 ### Manual control with a managed thread pool
 

@@ -30,7 +30,10 @@ source-of-truth doc so the checklist stays short and enforceable.
       exercised (Python 3.11–3.14). Trigger via *Actions → Test Matrix → Run
       workflow* or push a `v*` tag; grab artifacts named
       `pytest-python-<version>` for evidence.
-- [ ] Benchmarks captured before/after the final change set.
+- [ ] Benchmarks captured before/after the final change set (`python 3.14`).
+- [ ] Benchmark workflow [`bench.yml`](../.github/workflows/bench.yml)
+      triggered via *Actions → Bench CI → Run workflow* (or `v*` tag); JSON
+      artifact written to `bench/bench.json` and uploaded as `bench-results`.
 - [ ] Pytest asyncio configuration locked to `asyncio_mode=auto` (see
       [`pytest.ini`](../pytest.ini)).
 
