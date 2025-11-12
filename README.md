@@ -228,8 +228,9 @@ Legacy helpers were fully retired—`unirun.runtime` and friends now redirect to
 docs add a Quick Reference, Recipes, and Instrumentation guide to make adoption
 and observability straightforward, while pytest enforces a consistent
 `asyncio_mode=auto` configuration across CI and local runs. Together these
-changes keep the docs, tooling, and tests aligned for the v1.0 cut. Track the
-full shipping checklist in [`docs/release-readiness.md`](docs/release-readiness.md).
+changes keep the docs, tooling, and tests aligned for the v1.0 cut. Tagged
+publishes run through [`.github/workflows/release.yml`](.github/workflows/release.yml);
+track the full checklist in [`docs/release-readiness.md`](docs/release-readiness.md).
 
 ### Manual control with a managed thread pool
 

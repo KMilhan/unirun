@@ -17,8 +17,11 @@ source-of-truth doc so the checklist stays short and enforceable.
 - [ ] `pyproject.toml` metadata (classifiers, description, version source) is
       up-to-date.
 - [ ] `unirun/__init__.py` exports (`__all__`) include all public helpers.
-- [ ] Release workflow (`hatch build/publish` via CI) succeeds on a tagged
-      commit.
+- [ ] Release workflow [`release.yml`](../.github/workflows/release.yml) verified:
+  - `v*-rc*` tags publish to TestPyPI via OIDC.
+  - Stable `v*` tags publish to PyPI.
+  - `workflow_dispatch` (no tag) runs a build-only dry run; artifact stored for
+    review.
 
 ## Verification
 - [ ] Test matrix executed across CPython 3.11–3.14 (GIL + nogil) with results
